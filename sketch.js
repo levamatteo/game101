@@ -33,7 +33,9 @@ function firstLevel() {
   //load first level labarynth style but walls move closer the more you move
   //movement attached to mouse position
   //have a hitbox for the box and have a hitbox for the movving walls as well as the various walls of the labaryinth
-  //video tutorial :https://www.youtube.com/watch?v=XYzA_kPWyJ8
+  //video tutorial(circles): https://www.youtube.com/watch?v=XYzA_kPWyJ8
+  //video tutorial(squares): https://www.youtube.com/watch?v=hNV-xEMALr8
+    //square collider code:https://github.com/frankarendpoth/frankarendpoth.github.io/blob/master/content/pop-vlog/javascript/2017/010-collision/collision.js
   //attach variable to pizels moved
   //use that variable and multiply it to the size of the two plck boxes that are spaned on the edges of the screeen(continueous update)
 
