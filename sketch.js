@@ -6,7 +6,7 @@ function setup() {
 }
 
 function draw() {
-  background(220);
+  background(200);
   //   if game state variable is "title"
   //   then draw the title page
   // (execute title page function)
