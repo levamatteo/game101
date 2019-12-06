@@ -3,7 +3,7 @@ class Player {
     this.r = 48;
     this.x = w / 2;
     this.y = h - this.r;
-    this.speed = 2;
+    this.speed = 4;
     this.direction = 'still';
   }
   display() {

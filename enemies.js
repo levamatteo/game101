@@ -9,6 +9,6 @@ class Enemy {
     //rect(this.x, this.y, this.r, this.r)
   }
   move() {
-    this.y++/.5;
+    this.y += 3;
   }
 }

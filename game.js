@@ -132,8 +132,7 @@ function level1() {
   }
 
   for (let i = coins.length - 1; i >= 0; i--) {
-    // if (dist(player.x, wallWidth) <= (player.x + (wallWidth/2)) {
-    //   points = -1}
+
     if (dist(player.x, player.y, coins[i].x, coins[i].y) <= (player.r + coins[i].r) / 2) {
       points++;
       // console.log(points);
@@ -154,6 +153,9 @@ function level1() {
       console.log('e out');
     }
   }
+  if (player.x < (wallWidth/2) || player.x > (w - wallWidth/2)) {
+    points = -1
+  };
 fill(0);
 rect(0, h/2, wallWidth, 601)
 rect(w, h/2, wallWidth, 601)
