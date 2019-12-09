@@ -153,7 +153,7 @@ function level1() {
       console.log('e out');
     }
   }
-  if (player.x < (wallWidth/1.9) || player.x > (w - wallWidth/2)) {
+  if (player.x < (wallWidth/2) || player.x > (w - wallWidth/2)) {
     points = -1
   };
 fill(0);
