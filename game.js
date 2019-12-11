@@ -52,10 +52,14 @@ function draw() {
       youLose();
       cnv.mouseClicked(youLoseMouseClicked);
       break;
-      case 'you win':
-        youWin();
-        cnv.mouseClicked(youWinMouseClicked);
+      case 'you win1':
+        youWin1();
+        cnv.mouseClicked(youWin1MouseClicked);
         break;
+        case 'level2':
+          level2();
+          cnv.mouseClicked(level2MouseClicked);
+          break;
     default:
       break;
   }
@@ -153,13 +157,15 @@ function level1() {
       console.log('e out');
     }
   }
-  if (player.x < (wallWidth/1.9) || player.x > (w - wallWidth/2)) {
+  if (player.x < (wallWidth/2) || player.x > (w - wallWidth/2)) {
     points = -1
   };
 fill(0);
 rect(0, h/2, wallWidth, 601)
 rect(w, h/2, wallWidth, 601)
-wallWidth += .15;
+
+//WAALLL SPPPPPEDEED
+wallWidth += .12;
 
   textSize(20);
   stroke(50);
@@ -197,17 +203,93 @@ function youLoseMouseClicked() {
   points = 0;
 }
 
-function youWin() {
+function youWin1() {
   background(100);
   textSize(60);
   stroke(50);
   text('You Win', 100, 100);
   textSize(20)
-
+  text('Click For Next Level', 50, 50);
 }
 
-function youWinMouseClicked() {
+function youWin1MouseClicked() {
   console.log('canvas is clicked on you win page');
   state = 'title';
   points = 0;
+}
+
+function level1() {
+
+  background(img);
+  // text('click for points', w / 2, h - 60)
+
+  if (random(1) <= 0.01) {
+    coins.push(new Coin());
+
+  }
+  if (random(1) <= 0.01) {
+    enemies.push(new Enemy());
+
+  }
+
+  player.display();
+  player.move();
+
+
+
+
+  for (let i = 0; i < coins.length; i++) {
+    coins[i].display();
+    coins[i].move();
+
+
+  }
+
+  for (let i = 0; i < enemies.length; i++) {
+    enemies[i].display();
+    enemies[i].move();
+    // console.log(i);
+
+  }
+
+  for (let i = coins.length - 1; i >= 0; i--) {
+
+    if (dist(player.x, player.y, coins[i].x, coins[i].y) <= (player.r + coins[i].r) / 2) {
+      points++;
+      // console.log(points);
+      coins.splice(i, 1);
+    } else if (coins[i].y > h) {
+      coins.splice(i, 1);
+      console.log('h out');
+    }
+  }
+
+  for (let i = enemies.length - 1; i >= 0; i--) {
+    if (dist(player.x, player.y, enemies[i].x, enemies[i].y) <= (player.r + enemies[i].r) / 2) {
+      points--;
+      // console.log(points);
+      enemies.splice(i, 1);
+    } else if (enemies[i].y > h) {
+      enemies.splice(i, 1);
+      console.log('e out');
+    }
+  }
+  if (player.x < (wallWidth/1.9) || player.x > (w - wallWidth/2)) {
+    points = -1
+  };
+fill(0);
+rect(0, h/2, wallWidth, 601)
+rect(w, h/2, wallWidth, 601)
+wallWidth += .15;
+
+  textSize(20);
+  stroke(50);
+  text(`points: ${points}`, w / 2, h - 30);
+
+  if (points < 0) {
+    state = 'you lose'
+  }
+  if (points >= 15) {
+    state = 'you win'
+  }
 }
