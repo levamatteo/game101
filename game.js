@@ -126,6 +126,8 @@ function title() {
   stroke(50);
   text('Use arrowkeys to move', w / 4.2, h - 110);
   text('Press "space" to stop moving', w / 7.5, h - 60)
+    textSize(25);
+    text('Get to 15 points to go to the next level!', w-575, h - 500)
 }
 
 function titleMouseClicked() {
