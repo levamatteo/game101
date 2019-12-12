@@ -7,7 +7,7 @@ class Player {
     this.direction = 'still';
   }
   display() {
-    image(imgp, this.x, this.y, this.r, this.r)
+    image(imgpd, this.x, this.y, this.r, this.r)
     //rect(this.x, this.y, this.r, this.r)
   }
   move() {
@@ -18,6 +18,7 @@ class Player {
       case 'up':
         if (this.y > 0) {
           this.y -= this.speed;
+
         }
         break;
       case 'down':
@@ -35,6 +36,7 @@ class Player {
           this.x -= this.speed;
         }
         break;
+
     }
   }
 }

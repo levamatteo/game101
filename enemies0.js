@@ -1,4 +1,4 @@
-class Enemy {
+class Enemy0 {
   constructor() {
     this.r = 48
     this.x = random(w);
@@ -6,7 +6,7 @@ class Enemy {
     this.speed = 2.5;
   }
   display() {
-    image(imge, this.x, this.y, this.r, this.r)
+    image(imge0, this.x, this.y, this.r, this.r)
     //rect(this.x, this.y, this.r, this.r)
   }
   move() {
