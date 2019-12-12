@@ -15,7 +15,7 @@ let imgh;
 let imge;
 let imgt;
 let wallWidth = 10;
-
+let wallWidth2 = 10;
 function preload() {
   img = loadImage('images/Background1.png');
   imgp = loadImage('images/knight.png');
@@ -96,7 +96,7 @@ function title() {
 }
 
 function titleMouseClicked() {
-  state = 'level1';
+  state = 'level2';
   console.log('canvas is clicked on title page');
 
 }
@@ -106,11 +106,11 @@ function level1() {
   background(img);
   // text('click for points', w / 2, h - 60)
 
-  if (random(1) <= 0.01) {
+  if (random(.1) <= 0.01) {
     coins.push(new Coin());
 
   }
-  if (random(1) <= 0.01) {
+  if (random(.9) <= 0.01) {
     enemies.push(new Enemy());
 
   }
@@ -149,7 +149,7 @@ function level1() {
 
   for (let i = enemies.length - 1; i >= 0; i--) {
     if (dist(player.x, player.y, enemies[i].x, enemies[i].y) <= (player.r + enemies[i].r) / 2) {
-      points--;
+      points -= 5;
       // console.log(points);
       enemies.splice(i, 1);
     } else if (enemies[i].y > h) {
@@ -157,36 +157,36 @@ function level1() {
       console.log('e out');
     }
   }
-  if (player.x < (wallWidth/2) || player.x > (w - wallWidth/2)) {
-    points = -1
-  };
+  // if (player.x < (wallWidth/2) || player.x > (w - wallWidth/2)) {
+  //   points = -1
+  // };
 fill(0);
 rect(0, h/2, wallWidth, 601)
 rect(w, h/2, wallWidth, 601)
 
 //WAALLL SPPPPPEDEED
-wallWidth += .12;
+wallWidth += .15;
 
   textSize(20);
   stroke(50);
+  fill(255)
   text(`points: ${points}`, w / 2, h - 30);
-
+noFill()
   if (points < 0) {
     state = 'you lose'
   }
   if (points >= 15) {
-    state = 'you win'
+    state = 'you win1'
   }
 }
 
 function level1MouseClicked() {
   // points++;
-  // console.log('points = ' + points);
+  console.log('canvas clicked lv1');
   // if (points >= 10) {
   //   state = 'you lose'
   // }
 }
-
 
 function youLose() {
   background(100);
@@ -204,30 +204,32 @@ function youLoseMouseClicked() {
 }
 
 function youWin1() {
+fill(0)
   background(100);
   textSize(60);
   stroke(50);
   text('You Win', 100, 100);
   textSize(20)
-  text('Click For Next Level', 50, 50);
+  text('Click For Next Level', 100, 150);
 }
 
 function youWin1MouseClicked() {
   console.log('canvas is clicked on you win page');
-  state = 'title';
+  state = 'level2';
   points = 0;
 }
 
-function level1() {
+function level2() {
+
 
   background(img);
   // text('click for points', w / 2, h - 60)
 
-  if (random(1) <= 0.01) {
+  if (random(.65) <= 0.01) {
     coins.push(new Coin());
 
   }
-  if (random(1) <= 0.01) {
+  if (random(.6) <= 0.01) {
     enemies.push(new Enemy());
 
   }
@@ -260,36 +262,49 @@ function level1() {
       coins.splice(i, 1);
     } else if (coins[i].y > h) {
       coins.splice(i, 1);
-      console.log('h out');
+      // console.log('h out');
     }
   }
 
   for (let i = enemies.length - 1; i >= 0; i--) {
     if (dist(player.x, player.y, enemies[i].x, enemies[i].y) <= (player.r + enemies[i].r) / 2) {
-      points--;
-      // console.log(points);
+      // points -= 5;
+      wallWidth2 += 100;
+      console.log(wallWidth2);
       enemies.splice(i, 1);
     } else if (enemies[i].y > h) {
       enemies.splice(i, 1);
-      console.log('e out');
+      // console.log('e out');
     }
   }
-  if (player.x < (wallWidth/1.9) || player.x > (w - wallWidth/2)) {
-    points = -1
-  };
+  // if (player.x < (wallWidth/2) || player.x > (w - wallWidth/2)) {
+  //   points = -1
+  // };
 fill(0);
-rect(0, h/2, wallWidth, 601)
-rect(w, h/2, wallWidth, 601)
-wallWidth += .15;
+rect(0, h/2, wallWidth2, 601)
+rect(w, h/2, wallWidth2, 601)
 
+rect(h/2, h, 601, wallWidth2)
+rect(h/2, 0, 601, wallWidth2)
+
+
+fill(255)
   textSize(20);
   stroke(50);
   text(`points: ${points}`, w / 2, h - 30);
 
-  if (points < 0) {
+  if (wallWidth2 > 515) {
     state = 'you lose'
   }
   if (points >= 15) {
-    state = 'you win'
+    state = 'you win1'
   }
+}
+
+function level2MouseClicked() {
+  // points++;
+  console.log('canvas clicked lv2');
+  // if (points >= 10) {
+  //   state = 'you lose'
+  // }
 }
