@@ -129,7 +129,7 @@ function title() {
 }
 
 function titleMouseClicked() {
-  state = 'level3';
+  state = 'level1';
   console.log('canvas is clicked on title page');
 
 }
